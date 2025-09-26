@@ -5,11 +5,13 @@ export default function DonarContacto() {
     <section id="donar" className="cascade-wrap relative isolate overflow-hidden">
       {/* Fondo (compatible móvil + desktop) */}
       <img src="/images/donar-bg.png" alt="" className="bg-img" />
-      {/* Oscurecer un poco para mejor contraste de texto (puedes subir/bajar el /70) */}
-      <div className="absolute inset-0 z-0 bg-emerald-950/70" />
+
+      {/* Capa oscura debajo del efecto cascade */}
+      <div className="absolute inset-0 -z-10 bg-emerald-950/70" />
 
       <Container>
-        <div className="relative z-10 py-24 md:py-36 pb-32">
+        {/* IMPORTANTE: más padding abajo para no tapar el logo */}
+        <div className="relative z-10 py-24 md:py-36 pb-44 md:pb-48">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Columna izquierda */}
             <div className="text-center md:text-left text-white">
@@ -92,9 +94,9 @@ export default function DonarContacto() {
         </div>
       </Container>
 
-      {/* Logo flotante con link al inicio */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-12 text-center">
-        <a href="#inicio">
+      {/* Logo flotante con link al inicio (encima de todo, clickeable y con hover en desktop) */}
+      <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-12 z-20 text-center">
+        <a href="#inicio" className="inline-block">
           <img
             src="/images/logo.png"
             alt="Hogar Luz de Vida"
