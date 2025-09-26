@@ -12,34 +12,29 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Header base
   const headerBase = "fixed top-0 inset-x-0 z-50 transition-all duration-300";
   const headerGlass = "bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60";
   const headerSolid = "bg-white shadow-sm";
   const headerSpace = scrolled ? "py-2" : "py-4";
 
-  // Chips estilo “burbuja”
   const chipBase =
-    "inline-flex items-center rounded-full font-semibold shadow-sm " +
-    "transform-gpu transition hover:-translate-y-0.5 hover:shadow-md " +
-    "ring-1 ring-emerald-200 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 active:scale-95";
+    "inline-flex items-center rounded-full font-semibold shadow-sm transform-gpu transition " +
+    "hover:-translate-y-0.5 hover:shadow-md ring-1 ring-emerald-200 text-emerald-800 " +
+    "bg-emerald-50 hover:bg-emerald-100 active:scale-95";
   const chipSize = scrolled ? "px-3.5 py-1.5 text-xs" : "px-5 py-2 text-sm";
-
-  // CTA
   const ctaSize = scrolled ? "px-4 py-2 text-sm" : "px-5 py-2.5 text-base";
 
   const NAV = [
     { label: "Misión", href: "#mision" },
     { label: "Qué hacemos", href: "#programas" },
-    { label: "Galería", href: "/galeria" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Galería", href: "#galeria" }, // 👈 sección en la misma página
+    { label: "Contacto", href: "#contacto" }, // si tuvieras sección de contacto separada
   ];
 
   return (
     <header className={`${headerBase} ${headerSpace} ${scrolled ? headerSolid : headerGlass}`}>
       <Container>
         <nav className="flex items-center justify-between">
-          {/* LOGO */}
           <a href="#inicio" className="inline-flex items-center gap-2">
             <img
               src="/images/logo.png"
@@ -49,7 +44,7 @@ export default function Navbar() {
             <span className="sr-only">Ir al inicio</span>
           </a>
 
-          {/* MENÚ DESKTOP */}
+          {/* Desktop */}
           <ul className="hidden md:flex items-center gap-3">
             {NAV.map((item) => (
               <li key={item.label}>
@@ -60,7 +55,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA DESKTOP */}
           <a
             href="#donar"
             className={`hidden md:inline-flex rounded-full bg-emerald-700 text-white font-semibold shadow-md hover:bg-emerald-800 transform-gpu transition hover:-translate-y-0.5 ${ctaSize}`}
@@ -68,7 +62,7 @@ export default function Navbar() {
             Apóyanos
           </a>
 
-          {/* HAMBURGUESA MÓVIL */}
+          {/* Móvil: hamburguesa */}
           <button
             className="md:hidden inline-flex flex-col items-center justify-center w-10 h-10 rounded-md hover:bg-black/5"
             aria-expanded={open}
@@ -82,7 +76,7 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* NAV MÓVIL */}
+        {/* Menú móvil */}
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}

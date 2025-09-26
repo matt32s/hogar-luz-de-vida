@@ -5,7 +5,7 @@ import MisionVision from "./sections/MisionVision";
 import Programas from "./sections/Programas";
 import Galeria from "./sections/Galeria";
 import DonarContacto from "./sections/DonarContacto";
-import Historias from "@/components/sections/Historias";
+import Historias from "./components/sections/Historias";
 
 export default function App() {
   return (
@@ -17,12 +17,12 @@ export default function App() {
         <Presentacion />
         <MisionVision />
         <Programas />
+        {/* 👇 Galería primero */}
         <Galeria />
+        {/* 👇 Luego Historias (miniaturas + botón) */}
         <Historias />
         <DonarContacto />
-        
       </main>
     </div>
   );
 }
-

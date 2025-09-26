@@ -7,9 +7,7 @@ const imgs = [
 ];
 
 export default function Historias() {
-  // Solo mostrar las primeras 6 imágenes como “preview”
-  const preview = imgs.slice(0, 6);
-
+  const preview = imgs.slice(0, 6); // miniaturas en home
   return (
     <section id="historias" className="py-16 md:py-24 bg-white">
       <Container>
@@ -20,7 +18,7 @@ export default function Historias() {
           Momentos reales que inspiran.
         </p>
 
-        {/* Grid responsive: 2 columnas móvil, 3 en tablet, 4 en desktop */}
+        {/* 2 col en móvil, 3 en tablet, 4 en desktop */}
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
           {preview.map((src) => (
             <figure key={src} className="aspect-[4/3] overflow-hidden rounded-xl shadow-sm">
@@ -34,7 +32,7 @@ export default function Historias() {
           ))}
         </div>
 
-        {/* Botón que lleva a la galería completa */}
+        {/* Botón a la galería completa */}
         <div className="text-center mt-8">
           <a
             href="/galeria"
