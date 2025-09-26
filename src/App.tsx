@@ -5,7 +5,7 @@ import MisionVision from "./sections/MisionVision";
 import Programas from "./sections/Programas";
 import Galeria from "./sections/Galeria";
 import DonarContacto from "./sections/DonarContacto";
-import Historias from "./components/sections/Historias";
+import Historias from "./sections/Historias";
 
 export default function App() {
   return (
