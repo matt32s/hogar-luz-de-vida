@@ -3,14 +3,9 @@ import Container from "../components/Container";
 export default function DonarContacto() {
   return (
     <section id="donar" className="cascade-wrap relative isolate overflow-hidden">
-      {/* Fondo (compatible móvil + desktop) */}
-      <img src="/images/donar-bg.png" alt="" className="bg-img" />
-
-      {/* Capa de efecto visible en móvil + desktop */}
+      {/* Capas del efecto sobre la imagen global */}
       <div className="cascade-layer" />
-
-      {/* Oscurecer un poco para mejor contraste de texto */}
-      <div className="absolute inset-0 -z-20 bg-emerald-950/70" />
+      <div className="cascade-tint" />
 
       <Container>
         {/* Padding bottom grande para no tapar el logo */}

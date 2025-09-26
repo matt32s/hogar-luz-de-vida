@@ -9,17 +9,13 @@ const items = [
 
 export default function Programas() {
   return (
-    <section id="programas" className="relative isolate overflow-hidden">
-      {/* Fondo místico compartido */}
-      <div
-        className="absolute inset-0 -z-20 bg-[url('/images/donar-bg.png')] bg-cover bg-center md:bg-fixed"
-        style={{ backgroundPosition: "50% 12%" }}
-      />
-      <div className="absolute inset-0 -z-10 bg-emerald-950/70" />
-      <div className="absolute inset-0 -z-10 bg-cascade opacity-35" />
+    <section id="programas" className="cascade-wrap relative isolate overflow-hidden">
+      {/* Capas del efecto (sobre imagen global) */}
+      <div className="cascade-layer" />
+      <div className="cascade-tint" />
 
       <Container>
-        <div className="py-16 md:py-24">
+        <div className="py-16 md:py-24 relative z-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center">¿Qué hacemos?</h2>
           <p className="mt-3 max-w-2xl mx-auto text-center text-white/90">
             Acciones simples que transforman realidades.
