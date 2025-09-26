@@ -27,7 +27,7 @@ export default function Navbar() {
   const NAV = [
     { label: "Misión", href: "#mision" },
     { label: "Qué hacemos", href: "#programas" },
-    { label: "Galería", href: "#galeria" }, // 👈 sección en la misma página
+    { label: "Galería", href: "/galeria" },// 👈 sección en diferente página
     { label: "Contacto", href: "#contacto" }, // si tuvieras sección de contacto separada
   ];
 

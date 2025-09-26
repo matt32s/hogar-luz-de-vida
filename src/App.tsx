@@ -3,23 +3,22 @@ import Hero from "./sections/Hero";
 import Presentacion from "./sections/Presentacion";
 import MisionVision from "./sections/MisionVision";
 import Programas from "./sections/Programas";
-import Galeria from "./sections/Galeria";
+// ⛔️ QUITAMOS la importación de Galeria como sección
+// import Galeria from "./sections/Galeria";
 import DonarContacto from "./sections/DonarContacto";
-import Historias from "./sections/Historias";
+import Historias from "./sections/Historias"; // ojo: ahora está en src/sections
 
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      {/* pt-24 compensa la altura del header: 96px aprox */}
+      {/* pt-24 compensa la altura del header */}
       <main className="pt-24">
         <Hero />
         <Presentacion />
         <MisionVision />
         <Programas />
-        {/* 👇 Galería primero */}
-        <Galeria />
-        {/* 👇 Luego Historias (miniaturas + botón) */}
+        {/* Solo Historias (miniaturas + botón) */}
         <Historias />
         <DonarContacto />
       </main>
