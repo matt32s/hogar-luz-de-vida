@@ -6,11 +6,14 @@ export default function DonarContacto() {
       {/* Fondo (compatible móvil + desktop) */}
       <img src="/images/donar-bg.png" alt="" className="bg-img" />
 
-      {/* Capa oscura debajo del efecto cascade */}
-      <div className="absolute inset-0 -z-10 bg-emerald-950/70" />
+      {/* Capa de efecto visible en móvil + desktop */}
+      <div className="cascade-layer" />
+
+      {/* Oscurecer un poco para mejor contraste de texto */}
+      <div className="absolute inset-0 -z-20 bg-emerald-950/70" />
 
       <Container>
-        {/* IMPORTANTE: más padding abajo para no tapar el logo */}
+        {/* Padding bottom grande para no tapar el logo */}
         <div className="relative z-10 py-24 md:py-36 pb-44 md:pb-48">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Columna izquierda */}
@@ -53,9 +56,7 @@ export default function DonarContacto() {
             >
               <label htmlFor="nombre" className="block text-sm font-medium">Nombre</label>
               <input
-                id="nombre"
-                name="nombre"
-                required
+                id="nombre" name="nombre" required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="Tu nombre"
@@ -63,10 +64,7 @@ export default function DonarContacto() {
 
               <label htmlFor="email" className="block text-sm font-medium mt-4">Email</label>
               <input
-                id="email"
-                type="email"
-                name="email"
-                required
+                id="email" type="email" name="email" required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="tucorreo@ejemplo.com"
@@ -74,10 +72,7 @@ export default function DonarContacto() {
 
               <label htmlFor="mensaje" className="block text-sm font-medium mt-4">Mensaje</label>
               <textarea
-                id="mensaje"
-                name="mensaje"
-                rows={4}
-                required
+                id="mensaje" name="mensaje" rows={4} required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="¿Cómo te gustaría apoyar?"
@@ -94,7 +89,7 @@ export default function DonarContacto() {
         </div>
       </Container>
 
-      {/* Logo flotante con link al inicio (encima de todo, clickeable y con hover en desktop) */}
+      {/* Logo flotante con link al inicio */}
       <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-12 z-20 text-center">
         <a href="#inicio" className="inline-block">
           <img

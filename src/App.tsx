@@ -5,7 +5,7 @@ import MisionVision from "./sections/MisionVision";
 import Programas from "./sections/Programas";
 import Galeria from "./sections/Galeria";
 import DonarContacto from "./sections/DonarContacto";
-
+import Historias from "@/components/sections/Historias";
 
 export default function App() {
   return (
@@ -18,7 +18,9 @@ export default function App() {
         <MisionVision />
         <Programas />
         <Galeria />
+        <Historias />
         <DonarContacto />
+        
       </main>
     </div>
   );

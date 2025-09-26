@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -11,29 +12,34 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Header: sin bordes (adiós “línea”), vidrio arriba y sólido con sombra al scrollear.
+  // Header base
   const headerBase = "fixed top-0 inset-x-0 z-50 transition-all duration-300";
   const headerGlass = "bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60";
   const headerSolid = "bg-white shadow-sm";
-
-  // Usamos padding vertical (py) para la altura y centrar el contenido.
   const headerSpace = scrolled ? "py-2" : "py-4";
 
-  // Chips “burbuja”: grandes arriba, compactos al scrollear.
+  // Chips estilo “burbuja”
   const chipBase =
     "inline-flex items-center rounded-full font-semibold shadow-sm " +
     "transform-gpu transition hover:-translate-y-0.5 hover:shadow-md " +
     "ring-1 ring-emerald-200 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 active:scale-95";
   const chipSize = scrolled ? "px-3.5 py-1.5 text-xs" : "px-5 py-2 text-sm";
 
-  // CTA: también se compacta un poco al scrollear.
+  // CTA
   const ctaSize = scrolled ? "px-4 py-2 text-sm" : "px-5 py-2.5 text-base";
+
+  const NAV = [
+    { label: "Misión", href: "#mision" },
+    { label: "Qué hacemos", href: "#programas" },
+    { label: "Galería", href: "/galeria" },
+    { label: "Contacto", href: "#contacto" },
+  ];
 
   return (
     <header className={`${headerBase} ${headerSpace} ${scrolled ? headerSolid : headerGlass}`}>
       <Container>
         <nav className="flex items-center justify-between">
-          {/* LOGO: grande arriba, un poco menor al scrollear */}
+          {/* LOGO */}
           <a href="#inicio" className="inline-flex items-center gap-2">
             <img
               src="/images/logo.png"
@@ -43,22 +49,64 @@ export default function Navbar() {
             <span className="sr-only">Ir al inicio</span>
           </a>
 
-          {/* MENÚ DESKTOP en “burbujas” */}
+          {/* MENÚ DESKTOP */}
           <ul className="hidden md:flex items-center gap-3">
-            <li><a className={`${chipBase} ${chipSize}`} href="#mision">Misión</a></li>
-            <li><a className={`${chipBase} ${chipSize}`} href="#programas">Qué hacemos</a></li>
-            <li><a className={`${chipBase} ${chipSize}`} href="#galeria">Galería</a></li>
-            <li><a className={`${chipBase} ${chipSize}`} href="#contacto">Contacto</a></li>
+            {NAV.map((item) => (
+              <li key={item.label}>
+                <a className={`${chipBase} ${chipSize}`} href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
 
-          {/* CTA */}
+          {/* CTA DESKTOP */}
           <a
             href="#donar"
             className={`hidden md:inline-flex rounded-full bg-emerald-700 text-white font-semibold shadow-md hover:bg-emerald-800 transform-gpu transition hover:-translate-y-0.5 ${ctaSize}`}
           >
             Apóyanos
           </a>
+
+          {/* HAMBURGUESA MÓVIL */}
+          <button
+            className="md:hidden inline-flex flex-col items-center justify-center w-10 h-10 rounded-md hover:bg-black/5"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label="Abrir menú"
+            onClick={() => setOpen(!open)}
+          >
+            <span className={`h-0.5 w-6 bg-emerald-900 transition ${open ? "translate-y-1.5 rotate-45" : ""}`} />
+            <span className={`h-0.5 w-6 bg-emerald-900 my-1 transition ${open ? "opacity-0" : "opacity-100"}`} />
+            <span className={`h-0.5 w-6 bg-emerald-900 transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
+          </button>
         </nav>
+
+        {/* NAV MÓVIL */}
+        <div
+          id="mobile-menu"
+          className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}
+        >
+          <nav className="px-4 pb-4 grid gap-1 bg-white/90 backdrop-blur rounded-b-xl shadow-md">
+            {NAV.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="py-3 border-b text-emerald-900 font-medium"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="#donar"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex justify-center rounded-full bg-emerald-700 px-5 py-2.5 font-semibold text-white hover:bg-emerald-800 transition"
+            >
+              Apóyanos
+            </a>
+          </nav>
+        </div>
       </Container>
     </header>
   );
