@@ -1,4 +1,4 @@
-import Container from "../components/Container";
+import Container from "@/components/Container";
 
 const imgs = [
   "/images/galeria-1.png","/images/galeria-2.png","/images/galeria-3.png",

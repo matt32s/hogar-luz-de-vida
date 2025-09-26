@@ -1,11 +1,11 @@
-import Navbar from "./sections/Navbar";
-import Hero from "./sections/Hero";
-import Presentacion from "./sections/Presentacion";
-import MisionVision from "./sections/MisionVision";
-import Programas from "./sections/Programas";
-// import Galeria from "./sections/Galeria"; // ⛔️ NO usar como sección en home
-import DonarContacto from "./sections/DonarContacto";
-import Historias from "./sections/Historias";
+import Navbar from "@/sections/Navbar";
+import Hero from "@/sections/Hero";
+import Presentacion from "@/sections/Presentacion";
+import MisionVision from "@/sections/MisionVision";
+import Programas from "@/sections/Programas";
+// import Galeria from "@/sections/Galeria"; // ⛔️ NO usar como sección en home
+import DonarContacto from "@/sections/DonarContacto";
+import Historias from "@/sections/Historias";
 
 export default function App() {
   return (
