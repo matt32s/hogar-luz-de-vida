@@ -2,17 +2,14 @@ import Container from "../components/Container";
 
 export default function DonarContacto() {
   return (
-    <section id="donar" className="relative isolate overflow-hidden">
-      {/* === Fondo unificado === */}
-      <div
-        className="absolute inset-0 -z-20 bg-[url('/images/donar-bg.png')] bg-cover bg-center md:bg-fixed"
-        style={{ backgroundPosition: "50% 10%" }}
-      />
-      <div className="absolute inset-0 -z-10 bg-emerald-950/70" />
-      <div className="absolute inset-0 -z-10 bg-cascade opacity-35" />
+    <section id="donar" className="cascade-wrap relative isolate overflow-hidden">
+      {/* Fondo (compatible móvil + desktop) */}
+      <img src="/images/donar-bg.png" alt="" className="bg-img" />
+      {/* Oscurecer un poco para mejor contraste de texto (puedes subir/bajar el /70) */}
+      <div className="absolute inset-0 z-0 bg-emerald-950/70" />
 
       <Container>
-        <div className="py-24 md:py-36 pb-32">
+        <div className="relative z-10 py-24 md:py-36 pb-32">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Columna izquierda */}
             <div className="text-center md:text-left text-white">
