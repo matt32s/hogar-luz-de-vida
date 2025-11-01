@@ -3,100 +3,160 @@ import Container from "../components/Container";
 export default function DonarContacto() {
   return (
     <section id="donar" className="cascade-wrap relative isolate overflow-hidden">
-      {/* Capas del efecto sobre la imagen global */}
+      {/* Capas de luz sobre el fondo global fijo */}
       <div className="cascade-layer" />
       <div className="cascade-tint" />
 
       <Container>
-        {/* Padding bottom grande para no tapar el logo */}
+        {/* padding grande abajo para que el logo flotante no tape nada */}
         <div className="relative z-10 py-24 md:py-36 pb-44 md:pb-48">
           <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* Columna izquierda */}
+            {/* IZQUIERDA: texto + CTA + datos de contacto */}
             <div className="text-center md:text-left text-white">
-              <h2 className="text-3xl md:text-4xl font-extrabold">
+              <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-white">
                 Tu ayuda enciende esta Luz
               </h2>
-              <p className="mt-3 text-white/90 max-w-xl md:max-w-none">
+
+              <p className="mt-4 text-lg text-white/90 max-w-lg mx-auto md:mx-0">
                 Cada Aporte se transforma en Alimento, Abrigo y Esperanza.
-                Gracias por Sumar tu Corazón.
+                Gracias por sumar tu Corazón.
               </p>
 
-              <div className="mt-8">
-                <a
-                  href="https://tu-plataforma-de-donaciones.com/hogar-luz-de-vida"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Ir a Donar ahora"
-                  className="inline-flex items-center rounded-full px-7 py-3 text-base font-semibold
-                             bg-white/90 text-emerald-800 shadow-lg ring-2 ring-white/60 backdrop-blur
-                             transition transform-gpu hover:scale-105 hover:shadow-xl active:scale-95"
-                >
-                  Donar ahora
-                </a>
-              </div>
+              {/* Botón donar (placeholder, cámbialo luego si vas a usar una pasarela) */}
+              <a
+                href="#"
+                className="mt-8 inline-flex items-center justify-center rounded-xl bg-white text-emerald-900 font-semibold shadow-lg px-6 py-3 text-lg hover:bg-emerald-50 hover:shadow-xl transition"
+              >
+                Donar ahora
+              </a>
 
-              <ul className="mt-6 space-y-1 text-white/90">
-                <li><strong>Email:</strong> contacto@hogarluzdevida.org</li>
-                <li><strong>WhatsApp:</strong> +57 300 111 22 33</li>
-                <li><strong>Ubicación:</strong> Manizales, Caldas – Colombia</li>
+              {/* Datos de contacto */}
+              <ul className="mt-6 space-y-3 text-white/90 text-left inline-block md:inline-block">
+                {/* EMAIL */}
+                <li className="flex flex-col sm:flex-row sm:items-baseline gap-2">
+                  <span className="font-semibold text-white">Email:</span>
+                  <a
+                    className="text-white/90 hover:text-white underline-offset-2 hover:underline"
+                    href="mailto:contacto@hogarluzdevida.org"
+                  >
+                    contacto@hogarluzdevida.org
+                  </a>
+                </li>
+
+                {/* WHATSAPP como BOTÓN cliqueable */}
+                <li className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <span className="font-semibold text-white">WhatsApp:</span>
+
+                  <a
+                    href="https://wa.me/573116475186"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-md hover:shadow-lg transition"
+                  >
+                    {/* icono simple, si no lo quieres bórralo */}
+                    <span
+                      className="text-white text-base leading-none"
+                      aria-hidden="true"
+                    >
+                      💬
+                    </span>
+                    <span>+57 311 647 5186</span>
+                  </a>
+                </li>
+
+                {/* UBICACIÓN */}
+                <li className="flex flex-col sm:flex-row sm:items-baseline gap-2">
+                  <span className="font-semibold text-white">Ubicación:</span>
+                  <span>Manizales, Caldas – Colombia</span>
+                </li>
               </ul>
             </div>
 
-            {/* Columna derecha: formulario */}
+            {/* DERECHA: formulario vidrio */}
             <form
               className="bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl p-6 shadow-2xl text-white"
               action="mailto:contacto@hogarluzdevida.org"
               method="post"
               encType="text/plain"
             >
-              <label htmlFor="nombre" className="block text-sm font-medium">Nombre</label>
+              {/* Nombre */}
+              <label
+                htmlFor="nombre"
+                className="block text-sm font-medium"
+              >
+                Nombre
+              </label>
               <input
-                id="nombre" name="nombre" required
+                id="nombre"
+                name="nombre"
+                required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="Tu nombre"
               />
 
-              <label htmlFor="email" className="block text-sm font-medium mt-4">Email</label>
+              {/* Email */}
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium mt-4"
+              >
+                Email
+              </label>
               <input
-                id="email" type="email" name="email" required
+                id="email"
+                type="email"
+                name="email"
+                required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="tucorreo@ejemplo.com"
               />
 
-              <label htmlFor="mensaje" className="block text-sm font-medium mt-4">Mensaje</label>
+              {/* Mensaje */}
+              <label
+                htmlFor="mensaje"
+                className="block text-sm font-medium mt-4"
+              >
+                Mensaje
+              </label>
               <textarea
-                id="mensaje" name="mensaje" rows={4} required
+                id="mensaje"
+                name="mensaje"
+                rows={4}
+                required
                 className="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-white placeholder-white/70
                            focus:outline-none focus:ring-2 focus:ring-white/70"
                 placeholder="¿Cómo te gustaría apoyar?"
               />
 
+              {/* Botón enviar */}
               <button
-                className="mt-6 w-full rounded-full bg-emerald-600 px-4 py-2.5 font-semibold text-white
-                           shadow-md hover:bg-emerald-500 hover:shadow-lg transition"
+                className="mt-6 w-full rounded-lg bg-emerald-600 text-white px-4 py-3 font-semibold text-lg shadow-lg hover:bg-emerald-500 hover:shadow-xl transition"
               >
                 Enviar mensaje
               </button>
             </form>
           </div>
+
+          {/* LOGO flotante y copyright */}
+          <div className="absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-[50%] text-center">
+            <a
+              href="#inicio"
+              className="inline-flex justify-center items-center"
+            >
+              <img
+                src="/images/logo.png"
+                alt="Hogar Luz de Vida"
+                className="h-14 w-auto mx-auto drop-shadow-xl opacity-90 transition-transform duration-300 hover:scale-110 hover:opacity-100"
+              />
+            </a>
+
+            <p className="mt-3 text-sm text-white/70">
+              © 2025 Hogar Luz de Vida – Manizales, Colombia
+            </p>
+          </div>
         </div>
       </Container>
-
-      {/* Logo flotante con link al inicio */}
-      <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-12 z-20 text-center">
-        <a href="#inicio" className="inline-block">
-          <img
-            src="/images/logo.png"
-            alt="Hogar Luz de Vida"
-            className="h-14 w-auto mx-auto drop-shadow-xl opacity-95 transition-transform duration-300 hover:scale-110 hover:opacity-100"
-          />
-        </a>
-        <p className="mt-3 text-sm text-white/70">
-          © 2025 Hogar Luz de Vida – Manizales, Colombia
-        </p>
-      </div>
     </section>
   );
 }
