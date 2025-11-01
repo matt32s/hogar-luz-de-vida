@@ -27,8 +27,8 @@ export default function Navbar() {
   const NAV = [
     { label: "Misión", href: "#mision" },
     { label: "Qué hacemos", href: "#programas" },
-    { label: "Galería", href: "/galeria" },// 👈 sección en diferente página
-    { label: "Contacto", href: "#contacto" }, // si tuvieras sección de contacto separada
+    { label: "Galería", href: "/galeria" }, // 👈 sección en diferente página
+    { label: "Contacto", href: "#contacto" }, // Ahora apunta correctamente a "contacto"
   ];
 
   return (
@@ -56,7 +56,7 @@ export default function Navbar() {
           </ul>
 
           <a
-            href="#donar"
+            href="#contacto"
             className={`hidden md:inline-flex rounded-full bg-emerald-700 text-white font-semibold shadow-md hover:bg-emerald-800 transform-gpu transition hover:-translate-y-0.5 ${ctaSize}`}
           >
             Apóyanos
@@ -93,7 +93,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#donar"
+              href="#contacto"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-emerald-700 px-5 py-2.5 font-semibold text-white hover:bg-emerald-800 transition"
             >
