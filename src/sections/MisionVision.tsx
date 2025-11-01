@@ -9,7 +9,7 @@ export default function MisionVision() {
     },
     {
       title: "Nuestra Visión",
-      text: "Ser un faro de esperanza en Manizales: un lugar donde la vida vuelve a florecer.",
+      text: "Ser un faro de esperanza en Colombia: un lugar donde la vida vuelve a florecer.",
       img: "/images/vision.png",
     },
   ];
@@ -19,8 +19,18 @@ export default function MisionVision() {
       <Container>
         <div className="grid md:grid-cols-2 gap-6">
           {cards.map((c) => (
-            <article key={c.title} className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow transition-transform hover:-translate-y-1">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url('${c.img}')` }} />
+            <article
+              key={c.title}
+              className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow transition-transform hover:-translate-y-1"
+            >
+              <div
+                className="h-[300px] md:h-[490px] bg-cover bg-center transition-transform duration-300"
+                style={{
+                  backgroundImage: `url('${c.img}')`,
+                  objectPosition: "center", // Centrar la imagen
+                  objectFit: "cover", // Mantener la relación de aspecto
+                }}
+              />
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900">{c.title}</h3>
                 <p className="mt-3 text-gray-700">{c.text}</p>

@@ -14,11 +14,11 @@ export default function DonarContacto() {
             {/* Columna izquierda */}
             <div className="text-center md:text-left text-white">
               <h2 className="text-3xl md:text-4xl font-extrabold">
-                Tu ayuda enciende esta luz
+                Tu ayuda enciende esta Luz
               </h2>
               <p className="mt-3 text-white/90 max-w-xl md:max-w-none">
-                Cada aporte se transforma en alimento, abrigo y esperanza.
-                Gracias por sumar tu corazón.
+                Cada Aporte se transforma en Alimento, Abrigo y Esperanza.
+                Gracias por Sumar tu Corazón.
               </p>
 
               <div className="mt-8">

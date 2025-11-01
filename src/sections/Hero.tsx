@@ -45,10 +45,10 @@ export default function Hero() {
         {/* 👇 Ajusté padding superior para compensar el navbar grande */}
         <div className="pt-36 pb-20 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow">
-            Un hogar de luz y esperanza.
+            Un Hogar de Luz y Esperanza
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-white/90">
-            Acompañamos a comunidades indígenas y personas sin hogar en
+            Acompañamos a comunidades indígenas, adultos mayores y personas sin hogar en
             Manizales con techo, alimento y sanación.
           </p>
 
