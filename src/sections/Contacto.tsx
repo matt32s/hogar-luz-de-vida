@@ -10,7 +10,7 @@ export default function Contacto() {
             <p className="mt-4 text-gray-700">¿Quieres apoyar, donar o conocer más? Escríbenos:</p>
             <ul className="mt-4 space-y-2 text-gray-700">
               <li><strong>Email:</strong> <a className="text-emerald-700 underline" href="mailto:contacto@hogarluzdevida.org">contacto@hogarluzdevida.org</a></li>
-              <li><strong>WhatsApp:</strong> <a className="text-emerald-700 underline" href="https://wa.me/573001112233" target="_blank" rel="noreferrer">+57 311 647 5186</a></li>
+              <li><strong>WhatsApp:</strong> <a className="text-emerald-700 underline" href="https://wa.me/573001112233" target="_blank" rel="noreferrer">311 647 5186</a></li>
               <li><strong>Ubicación:</strong> Manizales, Caldas – Colombia</li>
             </ul>
           </div>
