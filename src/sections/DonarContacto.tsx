@@ -51,26 +51,26 @@ export default function Contacto() {
                   target="_blank"
                   rel="noreferrer"
                   className={`
-                    inline-flex items-center gap-2
-                    bg-emerald-700 hover:bg-emerald-600
+                    inline-flex items-center gap-3
+                    bg-emerald-600 hover:bg-emerald-500
                     text-white font-semibold
-                    rounded-full px-4 py-3
-                    shadow-md w-fit
+                    rounded-lg px-6 py-3
+                    shadow-lg w-fit
                     ring-1 ring-white/20
-                    transition
+                    transition transform hover:scale-105
                   `}
                 >
                   <span
                     className={`
-                      inline-flex h-5 min-w-[2.5rem] items-center justify-center
+                      inline-flex h-6 w-6 items-center justify-center
                       rounded-full bg-white/20 ring-1 ring-white/30
-                      text-[13px] leading-none font-medium
-                      px-2
+                      text-[14px] leading-none font-medium
+                      px-3 py-1
                     `}
                   >
-                    chat
+                    <i className="fab fa-whatsapp"></i>
                   </span>
-                  <span className="tracking-tight">+57 311 647 5186</span>
+                  <span className="text-base">+57 311 647 5186</span>
                 </a>
               </li>
 
