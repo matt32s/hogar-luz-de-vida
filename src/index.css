@@ -65,3 +65,54 @@ html { scroll-behavior: smooth; }
 body { 
   @apply bg-gray-50 text-gray-800; 
 }
+/* Asegúrate de tener el siguiente estilo para asegurar que la parte de contacto se vea bien en todas las versiones */
+
+#contacto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input,
+textarea {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+button {
+  background-color: #28a745;
+  padding: 12px;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  #contacto {
+    flex-direction: column;
+  }
+}
