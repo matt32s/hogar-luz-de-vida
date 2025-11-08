@@ -1,5 +1,7 @@
+// src/sections/Navbar.tsx
 import Container from "../components/Container";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,17 +27,17 @@ export default function Navbar() {
   const ctaSize = scrolled ? "px-4 py-2 text-sm" : "px-5 py-2.5 text-base";
 
   const NAV = [
-    { label: "Misión", href: "#mision" },
-    { label: "Qué hacemos", href: "#programas" },
-    { label: "Galería", href: "/galeria" }, // 👈 sección en diferente página
-    { label: "Contacto", href: "#contacto" }, // Ahora apunta correctamente a "contacto"
+    { label: "Misión", href: "#mision", external: false },
+    { label: "Qué hacemos", href: "#programas", external: false },
+    { label: "Galería", href: "/galeria", external: true }, // ruta interna, pero en Link
+    { label: "Contacto", href: "#donar", external: false },
   ];
 
   return (
     <header className={`${headerBase} ${headerSpace} ${scrolled ? headerSolid : headerGlass}`}>
       <Container>
         <nav className="flex items-center justify-between">
-          <a href="#inicio" className="inline-flex items-center gap-2">
+          <a href="/" className="inline-flex items-center gap-2">
             <img
               src="/images/logo.png"
               alt="Hogar Luz de Vida"
@@ -48,21 +50,27 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-3">
             {NAV.map((item) => (
               <li key={item.label}>
-                <a className={`${chipBase} ${chipSize}`} href={item.href}>
-                  {item.label}
-                </a>
+                {item.external ? (
+                  <Link className={`${chipBase} ${chipSize}`} to={item.href}>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a className={`${chipBase} ${chipSize}`} href={item.href}>
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
 
           <a
-            href="#contacto"
+            href="#donar"
             className={`hidden md:inline-flex rounded-full bg-emerald-700 text-white font-semibold shadow-md hover:bg-emerald-800 transform-gpu transition hover:-translate-y-0.5 ${ctaSize}`}
           >
             Apóyanos
           </a>
 
-          {/* Móvil: hamburguesa */}
+          {/* Móvil */}
           <button
             className="md:hidden inline-flex flex-col items-center justify-center w-10 h-10 rounded-md hover:bg-black/5"
             aria-expanded={open}
@@ -82,18 +90,29 @@ export default function Navbar() {
           className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}
         >
           <nav className="px-4 pb-4 grid gap-1 bg-white/90 backdrop-blur rounded-b-xl shadow-md">
-            {NAV.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="py-3 border-b text-emerald-900 font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV.map((item) =>
+              item.external ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 border-b text-emerald-900 font-medium"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 border-b text-emerald-900 font-medium"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
             <a
-              href="#contacto"
+              href="#donar"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-emerald-700 px-5 py-2.5 font-semibold text-white hover:bg-emerald-800 transition"
             >

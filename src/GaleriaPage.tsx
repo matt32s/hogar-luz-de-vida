@@ -2,8 +2,10 @@ import Container from "@/components/Container";
 
 
 const imgs = [
-  "/images/galeria-1.png","/images/galeria-2.png","/images/galeria-3.png","/images/galeria-4.png",
-  "/images/galeria-5.png","/images/galeria-6.png","/images/galeria-7.png","/images/galeria-8.png",
+  "/images/galeria-1.png","/images/galeria-2.png","/images/galeria-3.png",
+  "/images/galeria-4.png","/images/galeria-5.png","/images/galeria-6.png",
+  "/images/galeria-7.png","/images/galeria-8.png",
+  "/images/galeria-9.png","/images/galeria-10.png",
 ];
 
 export default function GaleriaPage() {

@@ -1,191 +1,104 @@
-import Container from "../components/Container";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser"; // Asegúrate de tener esta librería instalada
 
-export default function Contacto() {
+export default function DonarContacto() {
+  const form = useRef<HTMLFormElement | null>(null); // Cambié el tipo de ref
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_ululdpm", // tu Service ID (Outlook)
+          "template_XXXXXXXX", // tu Template ID real (el que acabas de crear)
+          form.current, // Asegúrate de que form.current esté definido
+          "YOUR_PUBLIC_KEY" // tu Public Key desde EmailJS > Account > API Keys
+        )
+        .then(
+          () => {
+            if (form.current) form.current.reset(); // Aquí especificamos que es un HTMLFormElement
+          },
+          (err: Error) => { // Especificamos que el tipo de err es Error
+            console.error("Error:", err);
+          }
+        );
+    }
+  };
+
   return (
-    <section id="contacto" className="py-16 md:py-24 relative">
-      <Container>
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* === Left Contact Info (Email, WhatsApp, Location) === */}
-          <div
-            className={`
-              rounded-2xl
-              bg-[rgba(16,60,46,0.6)]   /* Green translucent background */
-              backdrop-blur-md           /* Glass effect */
-              border border-white/20     /* Subtle border */
-              shadow-xl p-8 md:p-10
-              text-white
-              z-10 relative
-            `}
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-              Contacto
-            </h2>
+    <section className="flex flex-col md:flex-row items-start justify-center gap-10 p-6 md:p-12 bg-transparent">
+      {/* Formulario */}
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="w-full md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-xl"
+      >
+        <label className="text-white font-semibold">Nombre</label>
+        <input
+          type="text"
+          name="from_name"
+          required
+          className="w-full mt-2 mb-4 p-3 rounded-lg bg-emerald-950/40 text-white placeholder-gray-300 border border-emerald-700 focus:border-emerald-400"
+          placeholder="Tu nombre"
+        />
 
-            <p className="mt-4 text-white/80 text-lg leading-relaxed">
-              ¿Quieres apoyar, donar o conocer más?
-              <br className="hidden sm:block" />
-              Escríbenos:
-            </p>
+        <label className="text-white font-semibold">Correo electrónico</label>
+        <input
+          type="email"
+          name="from_email"
+          required
+          className="w-full mt-2 mb-4 p-3 rounded-lg bg-emerald-950/40 text-white placeholder-gray-300 border border-emerald-700 focus:border-emerald-400"
+          placeholder="tucorreo@ejemplo.com"
+        />
 
-            <ul className="mt-8 space-y-6 text-base md:text-lg">
-              {/* Email */}
-              <li className="flex flex-col">
-                <span className="font-semibold text-white/60">
-                  Correo electrónico:
-                </span>
-                <a
-                  className="text-emerald-200 hover:text-emerald-100 underline underline-offset-2"
-                  href="mailto:contacto@hogarluzdevida.org"
-                >
-                  contacto@hogarluzdevida.org
-                </a>
-              </li>
+        <label className="text-white font-semibold">Mensaje</label>
+        <textarea
+          name="message"
+          rows={5}
+          required
+          className="w-full mt-2 mb-6 p-3 rounded-lg bg-emerald-950/40 text-white placeholder-gray-300 border border-emerald-700 focus:border-emerald-400"
+          placeholder="¿Cómo te gustaría apoyar?"
+        />
 
-              {/* WhatsApp */}
-              <li className="flex flex-col">
-                <span className="font-semibold text-white/60">
-                  WhatsApp:
-                </span>
-                <a
-                  href="https://wa.me/573116475186"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`
-                    inline-flex items-center gap-3
-                    bg-emerald-600 hover:bg-emerald-500
-                    text-white font-semibold
-                    rounded-lg px-6 py-3
-                    shadow-lg w-fit
-                    ring-1 ring-white/20
-                    transition transform hover:scale-105
-                  `}
-                >
-                  <span
-                    className={`
-                      inline-flex h-6 w-6 items-center justify-center
-                      rounded-full bg-white/20 ring-1 ring-white/30
-                      text-[14px] leading-none font-medium
-                      px-3 py-1
-                    `}
-                  >
-                    <i className="fab fa-whatsapp"></i>
-                  </span>
-                  <span className="text-base">+57 311 647 5186</span>
-                </a>
-              </li>
+        <button
+          type="submit"
+          className="w-full p-3 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800"
+        >
+          Enviar mensaje
+        </button>
+      </form>
 
-              {/* Location */}
-              <li className="flex flex-col">
-                <span className="font-semibold text-white/60">
-                  Ubicación:
-                </span>
-                <span className="text-white/80">
-                  Manizales, Caldas – Colombia
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* === Right Form (Message) === */}
-          <form
-            className={`
-              rounded-2xl
-              bg-[rgba(16,60,46,0.6)]
-              backdrop-blur-md
-              border border-white/20
-              shadow-xl p-8 md:p-10
-              text-white
-              z-10 relative
-            `}
-            onSubmit={(e) => {
-              e.preventDefault();
-              // Handle form submission
-            }}
-          >
-            {/* Name */}
-            <label className="block text-sm font-medium text-white/80">
-              Nombre
-            </label>
-            <input
-              className={`
-                mt-2 w-full rounded-lg
-                bg-[rgba(16,60,46,0.6)]
-                border border-emerald-300/20
-                text-white
-                placeholder-white/50
-                px-3 py-2 text-base
-                shadow-lg outline-none
-                focus:ring-2 focus:ring-emerald-400/40
-                focus:border-emerald-300/40
-              `}
-              name="nombre"
-              placeholder="Tu nombre"
-              required
-            />
-
-            {/* Email */}
-            <label className="block text-sm font-medium text-white/80 mt-6">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              className={`
-                mt-2 w-full rounded-lg
-                bg-[rgba(16,60,46,0.6)]
-                border border-emerald-300/20
-                text-white
-                placeholder-white/50
-                px-3 py-2 text-base
-                shadow-lg outline-none
-                focus:ring-2 focus:ring-emerald-400/40
-                focus:border-emerald-300/40
-              `}
-              name="email"
-              placeholder="tucorreo@ejemplo.com"
-              required
-            />
-
-            {/* Message */}
-            <label className="block text-sm font-medium text-white/80 mt-6">
-              Mensaje
-            </label>
-            <textarea
-              className={`
-                mt-2 w-full rounded-lg
-                bg-[rgba(16,60,46,0.6)]
-                border border-emerald-300/20
-                text-white
-                placeholder-white/50
-                px-3 py-2 text-base
-                shadow-lg outline-none
-                focus:ring-2 focus:ring-emerald-400/40
-                focus:border-emerald-300/40
-                min-h-[140px]
-                resize-vertical
-              `}
-              name="mensaje"
-              placeholder="¿Cómo te gustaría apoyar?"
-              required
-            />
-
-            {/* Submit Button */}
-            <button
-              className={`
-                mt-8 w-full
-                rounded-lg
-                bg-emerald-700 hover:bg-emerald-600
-                text-white font-semibold
-                px-4 py-3 text-lg
-                shadow-lg
-                ring-1 ring-white/20
-                transition
-              `}
+      {/* Sección de contacto con WhatsApp */}
+      <div className="md:w-1/2">
+        <h2 className="text-3xl text-white font-bold mb-4">Contacto</h2>
+        <p className="text-white mb-4">¿Quieres apoyar, donar o conocer más? Escríbenos:</p>
+        <ul className="text-white">
+          <li>
+            <strong>Email:</strong>{" "}
+            <a
+              className="text-emerald-700 underline"
+              href="mailto:contacto@hogarluzdevida.org"
             >
-              Enviar mensaje
-            </button>
-          </form>
-        </div>
-      </Container>
+              contacto@hogarluzdevida.org
+            </a>
+          </li>
+          <li>
+            <strong>WhatsApp:</strong>{" "}
+            <a
+              className="text-emerald-700 underline"
+              href="https://wa.me/573116475186"
+              target="_blank"
+              rel="noreferrer"
+            >
+              +57 311 647 5186
+            </a>
+          </li>
+          <li>
+            <strong>Ubicación:</strong> Manizales, Caldas – Colombia
+          </li>
+        </ul>
+      </div>
     </section>
   );
 }
